@@ -1,0 +1,12 @@
+package main;
+
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFrame;
+
+public class Main {
+
+	public static void main(String[] args) {
+		SwingTerminalFrame a = new SwingTerminalFrame();
+		// new Menu("../utilizacion/configuracion.properties").iniciar();
+	}
+
+}

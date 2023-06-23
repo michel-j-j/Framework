@@ -1,0 +1,19 @@
+package model;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+public class Mian {
+
+	public static void main(String[] args) {
+		List<Object> lista = new ArrayList<Object>();
+		File var = Properties.getProperties("/resources");
+
+		for (Object var : lista) {
+
+		}
+	}
+
+}

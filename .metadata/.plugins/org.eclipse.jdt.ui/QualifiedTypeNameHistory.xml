@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="framework.Action"/>
+    <fullyQualifiedTypeName name="java.util.Objects"/>
+    <fullyQualifiedTypeName name="framework.Menu"/>
+    <fullyQualifiedTypeName name="com.googlecode.lanterna.terminal.swing.SwingTerminalFrame"/>
+    <fullyQualifiedTypeName name="com.googlecode.lanterna.gui2.Window"/>
+    <fullyQualifiedTypeName name="com.googlecode.lanterna.gui2.Label"/>
+    <fullyQualifiedTypeName name="com.googlecode.lanterna.gui2.Button"/>
+    <fullyQualifiedTypeName name="com.googlecode.lanterna.gui2.Panel"/>
+    <fullyQualifiedTypeName name="com.googlecode.lanterna.gui2.GridLayout"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.JsonNode"/>
+</qualifiedTypeNameHistroy>

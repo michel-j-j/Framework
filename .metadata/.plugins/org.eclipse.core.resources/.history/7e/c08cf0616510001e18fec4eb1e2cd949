@@ -1,0 +1,7 @@
+package main;
+
+import framework.Menu;
+
+public class Main {
+	new Menu("../utilizacion/configuracion.properties").iniciar();
+}

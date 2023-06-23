@@ -1,0 +1,25 @@
+package utilizacion;
+
+import framework.Action;
+
+public class ActionDos implements Action{
+
+	@Override
+	public void ejecutar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String nombreItemMenu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String descripcionItemMenu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,29 @@
+package main;
+
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFrame;
+
+public class Main {
+
+	public static void main(String[] args) {
+        GUIScreen screen = TerminalFacade.createGUIScreen();
+
+        if (screen == null) {
+            System.err.println("No se pudo inicializar la interfaz de usuario de consola.");
+            return;
+        }
+
+        Window window = new Window("Ejemplo de Java Lanterna");
+        window.addComponent(new Label("¡Hola, bienvenido a Java Lanterna!"));
+        Button button = new Button("Haz clic aquí", () -> {
+            MessageBox.showMessageBox(screen, "Mensaje", "Has hecho clic en el botón");
+        });
+        window.addComponent(button);
+        screen.showWindow(window);
+
+        TextInputDialog.showDialog(screen, "Entrada de texto", "Ingrese su nombre:");
+
+        screen.stopScreen();
+		// new Menu("../utilizacion/configuracion.properties").iniciar();
+	}
+
+}

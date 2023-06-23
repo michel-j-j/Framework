@@ -1,0 +1,36 @@
+package main;
+
+import com.googlecode.lanterna.gui2.Button;
+import com.googlecode.lanterna.gui2.Label;
+import com.googlecode.lanterna.gui2.Window;
+import com.googlecode.lanterna.gui2.dialogs.TextInputDialog;
+
+public class Main {
+
+	public static void main(String[] args) {
+		   try {
+	            Terminal terminal = new DefaultTerminalFactory().createTerminal();
+	            TerminalScreen screen = new TerminalScreen(terminal);
+	            screen.startScreen();
+
+	            WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
+	            BasicWindow window = new BasicWindow("Ejemplo de Java Lanterna");
+	            
+	            Panel panel = new Panel(new GridLayout(2));
+	            panel.addComponent(new Label("¡Hola, bienvenido a Java Lanterna!"));
+	            Button button = new Button("Haz clic aquí", () -> {
+	                textGUI.addWindowAndWait(new BasicWindow("Mensaje", new Label("Has hecho clic en el botón")));
+	            });
+	            panel.addComponent(button);
+	            
+	            window.setComponent(panel);
+	            textGUI.addWindow(window);
+	            textGUI.waitForWindowToClose(window);
+	            
+	            screen.stopScreen();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+}
