@@ -1,10 +1,14 @@
 package framework;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,11 +26,15 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 public class Menu {
 	private String rutaArchivo;
+	private Integer cantHilos;
 	private Map<Integer, Action> acciones;
+	private ExecutorService executor;
+	private List<Hilos> hilos;
 
 	public Menu(String rutaArchivo) {
 		this.rutaArchivo = Objects.requireNonNull(rutaArchivo);
 		this.acciones = new HashMap<Integer, Action>();
+		this.hilos = new ArrayList<Hilos>();
 	}
 
 	public void iniciar() {
@@ -60,8 +68,13 @@ public class Menu {
 				public void run() {
 					for (String var : checkBoxList.getCheckedItems()) {
 						Integer val = Integer.parseInt(var.substring(0, 1));
-						acciones.get(val).ejecutar();
+
+						// hilos.add(new Hilos(acciones.get(val)));
+						executor.submit(new Hilos(acciones.get(val)));
+						// acciones.get(val).ejecutar();
+
 					}
+
 				}
 			}));
 			window.setComponent(panel);
@@ -101,13 +114,11 @@ public class Menu {
 		Integer i = 0;
 		System.out.println(rutaArchivo);
 		try {
-
 			InputStream file = getClass().getResourceAsStream(rutaArchivo);
 			JsonNode rootNode = objectMapper.readTree(file);
 			JsonNode accionesNode = rootNode.get("acciones");
 			JsonNode cantHilos = rootNode.get("max-threads");
-			System.out.println(cantHilos);
-
+			this.executor = Executors.newFixedThreadPool(Integer.parseInt(cantHilos.toString()));
 			for (JsonNode accionNode : accionesNode) {
 				i++;
 				System.out.println(accionNode.asText());
